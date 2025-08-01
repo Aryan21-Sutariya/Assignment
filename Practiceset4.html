@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <head>
+        <title>Counter System</title>
+    </head>
+    <body>
+        <h1>Counter System</h1>
+        <button onclick="increase()" style="background-color:lightgreen;">Increase</button>
+        <button onclick="decrease()" style="background-color:lightcoral;">Decrease</button>
+        <button onclick="reset()" style="background-color:lightblue;">Reset</button>
+        <h2 id="number">0</h2>
+        <script>
+            let i=0;
+            function increase(){
+                i=i+1;
+              document.getElementById('number').innerText=i;
+            }
+            function decrease(){
+                i=i-1;
+              document.getElementById('number').innerText=i;
+            }
+            function reset(){
+                i=0;
+              document.getElementById('number').innerText=i;
+            }
+        </script>
+    </body>
+</head>
