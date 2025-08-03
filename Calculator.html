@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Calculator</title>
+    </head>
+    <body class="bg-[#f5b2ea]">
+        <div class="h-[600px] flex justify-center items-center">
+            <div class="w-[300px] h-[515px] bg-[#000000] rounded-[20px] border-4 border-[#353736]">
+                <div class="h-[160px] p-[20px] m-[5px] border-[3px] rounded-[20px]">
+                    <h1 id="display" class="text-8xl text-[#FFFFFF]">0</h1>
+                </div>
+                <div class="flex justify-center my-[20px]">             
+                    <button onclick="button(0)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">0</button>
+                    <button onclick="button(1)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">1</button>
+                    <button onclick="button(2)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">2</button>
+                    <button onclick="Cclear()" class="w-[67px] h-[55px] bg-[#603A4F] text-[#73D9C6] mx-[5px] rounded-[25px]">C</button>
+                </div>
+                <div class="flex justify-center my-[20px]">             
+                    <button onclick="button(3)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">3</button>
+                    <button onclick="button(4)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">4</button>
+                    <button onclick="button(5)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">5</button>
+                    <button onclick="calculate()" class="w-[67px] h-[55px] bg-[#603A4F] text-[#73D9C6] mx-[5px] rounded-[25px]">=</button>
+                </div>
+                <div class="flex justify-center my-[20px]">             
+                    <button onclick="button(6)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">6</button>
+                    <button onclick="button(7)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">7</button>
+                    <button onclick="button(8)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">8</button>
+                    <button onclick="opreator('+')" class="w-[67px] h-[55px] bg-[#603A4F] text-[#73D9C6] mx-[5px] rounded-[25px]">+</button>
+                </div>
+                <div class="flex justify-center my-[20px]">             
+                    <button onclick="button(9)" class="w-[67px] h-[55px] bg-[#352E36] text-[#FFFFFF] mx-[5px] rounded-[25px]">9</button>
+                    <button onclick="opreator('-')" class="w-[67px] h-[55px] bg-[#603A4F] text-[#73D9C6] mx-[5px] rounded-[25px]">-</button>
+                    <button onclick="opreator('x')" class="w-[67px] h-[55px] bg-[#603A4F] text-[#73D9C6] mx-[5px] rounded-[25px]">x</button>
+                    <button onclick="opreator('/')" class="w-[67px] h-[55px] bg-[#603A4F] text-[#73D9C6] mx-[5px] rounded-[25px]">/</button>
+                </div>               
+            </div>
+        </div>
+
+
+        <script>
+         let currentno=0;
+         let total=0;
+         let opra='';
+         let signal=false;
+ 
+            function button(num){
+                if(signal){
+                    currentno=0;
+                    signal=false;
+                }
+            currentno=currentno*10+num;
+            document.getElementById("display").innerHTML=currentno;
+            } 
+ 
+            function opreator(op){
+                opinput=op;
+                document.getElementById("display").innerHTML=opinput;
+                if(opra){
+                    calculate();
+                }
+                else{
+                    total=currentno;
+                }
+                opra=op;
+                signal=true;
+            }
+            function calculate(){
+                switch(opra){
+                    case '+': total=total+currentno;
+                    break;
+                    case '-': total=total-currentno;
+                    break;
+                    case 'x': total=total*currentno;
+                    break;
+                    case '/': total=total/currentno;
+                    break;
+                }
+                document.getElementById('display').innerHTML=total;
+                currentno=total;
+                opra='';
+            }
+            function Cclear(){
+                currentno=0;
+                total=0;
+                opra='';
+                signal=false;
+                document.getElementById('display').innerHTML=0;
+            }
+        </script>
+
+    </body>
+</html>
+ 
